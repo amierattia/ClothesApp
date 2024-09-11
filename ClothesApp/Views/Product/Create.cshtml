@@ -1,0 +1,62 @@
+﻿@model ClothesApp.Models.Product
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<h1 class="text-center my-4">Create Order</h1>
+
+<div class="container">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="card-title">Order Details</h4>
+            <hr />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control rounded-pill" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description" class="form-control rounded-pill" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" class="form-control rounded-pill" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="StockQuantity" class="form-label"></label>
+                    <input asp-for="StockQuantity" class="form-control rounded-pill" />
+                    <span asp-validation-for="StockQuantity" class="text-danger"></span>
+                </div>
+                 <div class="mb-3">
+                    <label asp-for="ReorderLevel" class="form-label"></label>
+                    <input asp-for="ReorderLevel" class="form-control rounded-pill" />
+                    <span asp-validation-for="ReorderLevel" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <input type="submit" value="Create Order" class="btn btn-primary btn-lg rounded-pill" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="btn btn-secondary btn-lg rounded-pill">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
