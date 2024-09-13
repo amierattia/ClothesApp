@@ -53,9 +53,18 @@ namespace ClothesApp.Controllers
         {
             try
             {
-                oDBContext.Sales.Add(prod);
-                oDBContext.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    oDBContext.Sales.Add(prod);
+                    oDBContext.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound("Invalid Data ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌");
+
+                }
+
             }
             catch
             {

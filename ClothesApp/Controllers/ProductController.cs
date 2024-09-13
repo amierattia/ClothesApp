@@ -80,19 +80,42 @@ namespace ClothesApp.Controllers
         }
 
         // GET: OrderController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int Id)
         {
-            return View();
+            var findId = OdbContext.Products.FirstOrDefault(id => id.ProductID == Id);
+            if (findId == null)
+            {
+                return NotFound("Not found Id");
+            }
+            else
+            {
+                return View(findId);
+
+            }
         }
+
+
+
 
         // POST: OrderController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int Id, Product collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var findId = OdbContext.Products.FirstOrDefault(id => id.ProductID == Id);
+                if(findId != null)
+                {
+                    OdbContext.Products.Remove(findId);
+                    OdbContext.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return NotFound("Not Found Id");
+                }
+               
             }
             catch
             {

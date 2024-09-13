@@ -10,7 +10,7 @@ namespace ClothesApp.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly DBContext oDb;
 
-        public HomeController(ILogger<HomeController> logger , DBContext oDb)
+        public HomeController(ILogger<HomeController> logger, DBContext oDb)
         {
             _logger = logger;
             this.oDb = oDb;
@@ -32,5 +32,8 @@ namespace ClothesApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+      
     }
+
 }
